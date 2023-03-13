@@ -29,14 +29,22 @@
 
 <script>
 import { ref } from "vue";
+import env from "@/env.js";
 export default {
   setup() {
-    const search = ref("Jeannot");
+    const search = ref("");
     const movies = ref([]);
 
     const SearchMovies = () => {
       if (search.value != "") {
-        console.log(search.value);
+        // console.log(search.value);
+        fetch(
+          `http://www.omdbapi.com/?i=tt3896198&apikey=${env.apiKeys}&s=${search.value}`
+        )
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+          });
       }
     };
 
