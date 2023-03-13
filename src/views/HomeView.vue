@@ -24,11 +24,15 @@
       <input class="submit" type="submit" value="Search" />
     </form>
     <div class="movies-list">
-      <div class="movies" v-for="movie in movies" :key="movie.imdbID">
+      <div class="movie" v-for="movie in movies" :key="movie.imdbID">
         <router-link :to="'movie/' + movie.imdbID" class="movie-link">
           <div class="product-img">
             <img :src="movie.Poster" alt="" title="Movie Poster" />
-            <div class="type"> movie : {{ movie.Type }}</div>
+            <div class="type">movie : {{ movie.Type }}</div>
+          </div>
+          <div class="detail-movie">
+            <p class="year">{{ movie.year }}</p>
+            <h3>Title : {{ movie.Title }}</h3>
           </div>
         </router-link>
       </div>
@@ -152,5 +156,48 @@ input {
 }
 .submit:active {
   background-color: #3b8070;
+}
+
+.movies-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0px 8px;
+}
+
+.movie {
+  max-width: 50%;
+  flex: 1 1 50%;
+  padding: 16px 8px;
+}
+
+.movie-link {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.product-img {
+  position: relative;
+  display: block;
+}
+
+.product-img img {
+  display: block;
+  width: 100%;
+  height: 275px;
+  object-fit: cover;
+}
+.product-img .type {
+  position: absolute;
+  padding: 8px 16px;
+  background-color: #42b884;
+  color: #fff;
+  bottom: 16px;
+  left: 0;
+  text-transform: capitalize;
+}
+
+.detail-movie{
+    background-color: #496583;
 }
 </style>
