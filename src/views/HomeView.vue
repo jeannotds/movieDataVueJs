@@ -23,7 +23,16 @@
       />
       <input class="submit" type="submit" value="Search" />
     </form>
-    <div class="movies-list">MOVIES</div>
+    <div class="movies-list">
+      <div class="movies" v-for="movie in movies" :key="movie.imdbID">
+        <router-link :to="'movie/' + movie.imdbID" class="movie-link">
+          <div class="product-img">
+            <img :src="movie.Poster" alt="" title="Movie Poster" />
+            <div class="type"> movie : {{ movie.Type }}</div>
+          </div>
+        </router-link>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -43,7 +52,10 @@ export default {
         )
           .then((res) => res.json())
           .then((data) => {
-            console.log(data);
+            // console.log(data);
+            movies.value = data.Search;
+            search.value = "";
+            console.log(movies.value);
           });
       }
     };
