@@ -36,3 +36,32 @@ export default {
   },
 };
 </script>
+
+<style>
+    .movie-detail{
+        padding: 16px;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+    .movie-detail h2{
+        font-size: 28px;
+        font-weight: 600;
+        color: #FFF;
+        margin-bottom: 16px;
+    }
+
+    .movie-detail .featured-img{
+        display: block;
+        max-width: 200px;
+        margin-bottom: 16px;
+        width: 100%;
+    }
+
+    p{
+        color: #FFF;
+        font-size: 18px;
+        line-height: 1.4;
+    }
+
+</style>
