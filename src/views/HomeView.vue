@@ -14,11 +14,12 @@
         </div>
       </router-link>
     </div>
-    <form @submit.prevent="" class="search-box">
+    <form @submit.prevent="SearchMovies()" class="search-box">
       <input
         class="input"
         type="text"
         placeholder="What are you looking for ?"
+        v-model="search"
       />
       <input class="submit" type="submit" value="Search" />
     </form>
@@ -27,9 +28,24 @@
 </template>
 
 <script>
+import { ref } from "vue";
 export default {
-  name: "HomeView",
-  components: {},
+  setup() {
+    const search = ref("Jeannot");
+    const movies = ref([]);
+
+    const SearchMovies = () => {
+      if (search.value != "") {
+        console.log(search.value);
+      }
+    };
+
+    return {
+      search,
+      movies,
+      SearchMovies,
+    };
+  },
 };
 </script>
 
@@ -106,17 +122,15 @@ input {
 
 .submit {
   max-width: 300px;
-  /* max-height: 300px; */
   background-color: rgba(0, 0, 0, 0.2);
-  /* box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2); */
   padding: 12px;
   border-radius: 8px;
-  color: #FFF;
+  color: #fff;
   font-size: 20px;
   text-transform: uppercase;
   transition: 0.4s;
 }
-.submit:active{
-  background-color: #3B8070;
+.submit:active {
+  background-color: #3b8070;
 }
 </style>
